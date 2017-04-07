@@ -1,6 +1,6 @@
 var app = angular.module('todoApp', []);
 
-app.controller('todoAppController', ['$scope', 'ApiService', TodoAppController]);
+app.controller('todoAppController', ['ApiService', TodoAppController]);
 
 function Task(id, summary, description, date, status) {
     this.id = id;
@@ -10,104 +10,106 @@ function Task(id, summary, description, date, status) {
     this.status = status;
 }
 
-function TodoAppController($scope, apiService) {
-    $scope.taskLabel = 'SSW'; //SoftServe Workshop
-    $scope.tasks = [];
-    $scope.statuses = ['todo', 'doing', 'done'];
-    $scope.showPreviewForItem = false;
-    $scope.sidebarExtended = false;
-    $scope.formAction = ''; // 'create' | 'update'
-    $scope.itemToPreview = null;
-    $scope.formTask = null;
+function TodoAppController(apiService) {
+    var vm = this;
+    
+    vm.taskLabel = 'SSW'; //SoftServe Workshop
+    vm.tasks = [];
+    vm.statuses = ['todo', 'doing', 'done'];
+    vm.showPreviewForItem = false;
+    vm.sidebarExtended = false;
+    vm.formAction = ''; // 'create' | 'update'
+    vm.itemToPreview = null;
+    vm.formTask = null;
 
     apiService
         .getAllTasks()
         .then(function (tasks) {
-            $scope.tasks = tasks;
+            vm.tasks = tasks;
         });
 
-    $scope.getTasksByStatus = function(status) {
-        return $scope.tasks.filter(function (task) {
+    vm.getTasksByStatus = function(status) {
+        return vm.tasks.filter(function (task) {
             return task.status === status;
         })
     };
 
-    $scope.showPreview = function(task) {
-        $scope.showPreviewForItem = true;
-        $scope.itemToPreview = task;
-        $scope.sidebarExtended = false;
+    vm.showPreview = function(task) {
+        vm.showPreviewForItem = true;
+        vm.itemToPreview = task;
+        vm.sidebarExtended = false;
     };
 
-    $scope.submitForm = function (task) {
-        switch ($scope.formAction) {
+    vm.submitForm = function (task) {
+        switch (vm.formAction) {
             case 'create':
                task.id = Date.now();
                apiService
                    .createTask(task)
                    .then(function (res) {
-                       $scope.tasks.push(task);
+                       vm.tasks.push(task);
                    });
                break;
             case 'update':
-                var index = $scope.tasks.findIndex(function (item) {
+                var index = vm.tasks.findIndex(function (item) {
                     return item.id === task.id;
                 });
 
                 apiService
                     .updateTask(task.id, task)
                     .then(function (response) {
-                        $scope.tasks.splice(index, 1, task);
+                        vm.tasks.splice(index, 1, task);
                     });
 
             default:
         }
 
-        $scope.hideSidebarForm();
+        vm.hideSidebarForm();
     };
 
-    $scope.removeTask = function (task) {
-        var index = $scope.tasks.indexOf(task);
+    vm.removeTask = function (task) {
+        var index = vm.tasks.indexOf(task);
 
-        if (!index < 0 || !window.confirm("Are you sure you want to remove the task " + $scope.taskLabel + task.id + "?")) {
+        if (!index < 0 || !window.confirm("Are you sure you want to remove the task " + vm.taskLabel + task.id + "?")) {
             return;
         }
 
         apiService
             .removeTask(task.id)
             .then(function (response) {
-                $scope.tasks.splice(index, 1);
-                $scope.showPreviewForItem = false;
-                $scope.itemToPreview = null;
+                vm.tasks.splice(index, 1);
+                vm.showPreviewForItem = false;
+                vm.itemToPreview = null;
             });
     };
 
-    $scope.cancelForm = function () {
+    vm.cancelForm = function () {
         this.hideSidebarForm();
     };
 
-    $scope.getDateFromTimestamp = function(timestamp, locale) {
+    vm.getDateFromTimestamp = function(timestamp, locale) {
         return locale ? (new Date(timestamp)).toLocaleString() : new Date(timestamp);
     };
 
-    $scope.showSidebarForm = function (formAction) {
-        $scope.sidebarExtended = true;
-        $scope.showPreviewForItem = false;
-        $scope.formAction = formAction;
+    vm.showSidebarForm = function (formAction) {
+        vm.sidebarExtended = true;
+        vm.showPreviewForItem = false;
+        vm.formAction = formAction;
 
         switch (formAction) {
             case 'create':
-                $scope.formTask = new Task(null, '', '', Date.now(), 'todo');
+                vm.formTask = new Task(null, '', '', Date.now(), 'todo');
                 break;
             case 'update':
-                $scope.formTask = angular.copy($scope.itemToPreview);
+                vm.formTask = angular.copy(vm.itemToPreview);
                 break;
         }
     };
 
-    $scope.getRemainingStatuses = function (currentStatus) {
+    vm.getRemainingStatuses = function (currentStatus) {
         var remainingStatuses = [];
 
-        $scope.statuses.forEach(function (status) {
+        vm.statuses.forEach(function (status) {
             if (status !== currentStatus) {
                 remainingStatuses.push(status);
             }
@@ -116,8 +118,8 @@ function TodoAppController($scope, apiService) {
         return remainingStatuses;
     };
 
-    $scope.moveTask = function (task, newStatus) {
-        var index = $scope.tasks.indexOf(task);
+    vm.moveTask = function (task, newStatus) {
+        var index = vm.tasks.indexOf(task);
         var updated = angular.copy(task);
 
         updated.status = newStatus;
@@ -125,11 +127,11 @@ function TodoAppController($scope, apiService) {
         apiService
             .updateTask(task.id, updated)
             .then(function (response) {
-                $scope.tasks[index].status = newStatus;
+                vm.tasks[index].status = newStatus;
             });
     };
 
-    $scope.hideSidebarForm = function () {
-        $scope.sidebarExtended = false;
+    vm.hideSidebarForm = function () {
+        vm.sidebarExtended = false;
     }
 }
