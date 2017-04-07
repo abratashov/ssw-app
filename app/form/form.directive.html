@@ -1,0 +1,22 @@
+<form class="todo-app--tasks-sidebar-form text-left padding-base">
+    <i>Summary:</i><br>
+    <textarea type="text"
+              cols="50"
+              rows="10"
+              name="summary"
+              ng-model="form.item.summary"
+              class="form-control padding-vertical-base">
+    </textarea><br><br>
+
+    <i>Description:</i><br>
+    <textarea type="text"
+              cols="50"
+              rows="10"
+              name="description"
+              ng-model="form.item.description"
+              class="form-control padding-vertical-base">
+    </textarea><br><br>
+
+    <button class="todo-app--tasks-preview-edit button-secondary" ng-click="form.onSave({task: form.item})">{{form.action}}</button>
+    <button class="todo-app--tasks-preview-remove button-primary" ng-click="form.onCancel()">Cancel</button>
+</form>

@@ -1,0 +1,174 @@
+/*Reset*/
+ul, li {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+}
+body {
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-weight: 300;
+    font-size: 22px;
+}
+
+/*Flex and Grid*/
+.flex-container {
+    display: flex;
+}
+.flex-1 {
+    flex: 1;
+}
+.flex-space-between {
+    justify-content: space-between;
+}
+.flex-display-columns {
+    flex-direction: column;
+}
+
+/* Spacing */
+.padding-vertical-base {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.padding-horizontal-base {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.padding-base {
+    padding: 10px;
+}
+.margin-vertical-small {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
+/* Layout, text and colors*/
+.color-primary {
+    color: #ff3366;
+}
+.background-primary {
+    background-color: #1f2532;
+}
+.font-large {
+    font-size: 32px;
+}
+.text-center {
+    text-align: center;
+}
+.text-left {
+    text-align: left;
+}
+.finished {
+    text-decoration: line-through;
+}
+.pointer {
+    cursor: pointer;
+}
+.bordered-column-left {
+    border-left: solid 1px  #1f2532;
+}
+.bordered-column-right {
+    border-right: solid 1px #1f2532;
+}
+.bordered-column-top {
+    border-top: solid 1px #1f2532;
+}
+
+.button-primary {
+    border-radius: 20px;
+    background: #f36;
+    border: 2px solid #f36;
+    font-size: 14px;
+    display: inline-block;
+    color: #f5f5f5;
+    text-transform: uppercase;
+    padding: 8px 32px;
+    cursor: pointer;
+    font-weight: 400;
+    outline: none;
+}
+
+.button-secondary {
+    font-size: 14px;
+    display: inline-block;
+    text-transform: uppercase;
+    padding: 8px 32px;
+    cursor: pointer;
+    font-weight: 400;
+    outline: none;
+    border-radius: 20px;
+    border: 2px solid #f36;
+    color: #f36;
+    background: #fff;
+}
+
+.form-control {
+    padding: 6px 12px;
+    border-radius: 4px;
+    background: #fafafa;
+    font-size: 16px;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.button-primary:hover, .button-secondary:hover {
+    opacity: 0.5;
+}
+
+/*App styles*/
+.todo-app {
+    background: #fafafa;
+}
+
+.todo-app--toolbar {
+    background: #1f2532;
+    font-weight: 700;
+}
+
+.todo-app--toolbar-add-button {
+    border: 1px solid red;
+    border-radius: 100%;
+    padding: 0 16px;
+}
+
+.todo-app--tasks-list-item {
+    background: #ededed;
+    border-radius: 2%;
+    box-shadow: -1px 2px 0 0 rgba(0,0,0,0.22);
+    position: relative;
+    text-overflow: ellipsis;
+}
+.todo-app--tasks-list-item.active {
+    background: #d8d8d8;
+    box-shadow: -2px 4px 0 0 rgba(0,0,0,0.22);
+
+}
+.todo-app--tasks-list-item-panel {
+    overflow: hidden;
+    flex-basis: 0;
+    transition: 0.4s ease;
+    border: none;
+}
+.todo-app--tasks-list-item-text {
+    padding-right: 15px;
+}
+.todo-app--tasks-list-item:hover .todo-app--tasks-list-item-panel {
+    flex-basis: 100px;
+    padding: 10px;
+    border-left: solid 1px  #1f2532;
+}
+.todo-app--tasks-list-item-panel--move {
+    text-transform: capitalize;
+}
+.todo-app--tasks-sidebar {
+    flex-basis: 300px;
+    transition: 0.2s ease;
+}
+
+.todo-app--tasks-sidebar.extended {
+    flex-basis: 400px;
+}
+.todo-app--tasks-sidebar-form {
+
+}
