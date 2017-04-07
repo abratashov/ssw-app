@@ -1,2 +1,4 @@
+import { bootstrap } from 'angular';
+import TodoAppModule from './app.module';
 
-import { a } from './test';
+bootstrap(document.body, [TodoAppModule]);

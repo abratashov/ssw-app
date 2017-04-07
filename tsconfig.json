@@ -1,9 +1,14 @@
 {
-  "compilerOptions": {},
+  "compilerOptions": {
+    "types": ["angular", "es6-shim"]
+  },
   "include": [
     "src/**/*"
   ],
   "exclude": [
     "node_modules"
+  ],
+  "files": [
+    "src/typings.d.ts"
   ]
 }
