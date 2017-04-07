@@ -5,6 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server",
+    "clean": "rimraf dist",
+    "build": "webpack",
     "server": "node backend/server.js"
   },
   "keywords": [],
@@ -14,5 +17,14 @@
     "angular": "^1.6.4",
     "body-parser": "^1.17.1",
     "express": "^4.15.2"
+  },
+  "devDependencies": {
+    "copy-webpack-plugin": "^4.0.1",
+    "rimraf": "^2.6.1",
+    "source-map-loader": "^0.2.1",
+    "ts-loader": "^2.0.3",
+    "typescript": "^2.2.2",
+    "webpack": "^2.3.3",
+    "webpack-dev-server": "^2.4.2"
   }
 }
