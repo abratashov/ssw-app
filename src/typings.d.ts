@@ -9,3 +9,8 @@ declare interface ITask {
 }
 
 declare type FormAction = 'create' | 'update';
+
+declare module '*.html' {
+    const content: string;
+    export default content;
+}

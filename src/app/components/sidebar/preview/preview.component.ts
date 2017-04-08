@@ -1,3 +1,5 @@
+import previewTemplate from './preview.component.html'
+
 class PreviewComponent {
     public static $inject = [];
 
@@ -25,5 +27,5 @@ export const previewComponent = {
         onEdit: "&"
     },
     controller: PreviewComponent,
-    templateUrl: 'app/components/sidebar/preview/preview.component.html'
+    template: previewTemplate
 };

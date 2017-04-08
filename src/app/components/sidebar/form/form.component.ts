@@ -1,3 +1,5 @@
+import formTemplate from './form.component.html';
+
 class FormComponent {
     public static $inject = [];
 
@@ -24,5 +26,5 @@ export const formComponent = {
         onSave: "&"
     },
     controller: FormComponent,
-    templateUrl: 'app/components/sidebar/form/form.component.html'
+    template: formTemplate
 };

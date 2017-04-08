@@ -1,3 +1,5 @@
+import headerTemplate from './header.component.html'
+
 class HeaderComponent {
     public onAdd: () => void;
     public static $inject = [];
@@ -12,5 +14,5 @@ export const headerComponent = {
         onAdd: "&"
     },
     controller: HeaderComponent,
-    templateUrl: 'app/components/header/header.component.html'
+    template: headerTemplate
 };

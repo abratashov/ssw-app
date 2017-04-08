@@ -1,3 +1,4 @@
+import appTemplate from './app.component.html';
 import { ApiService } from '../services';
 import { Task } from '../models';
 
@@ -20,7 +21,6 @@ class AppComponent {
         this.apiService
             .getAllTasks()
             .then((tasks: ITask[]) => {
-            console.log(tasks)
                 this.tasks = tasks;
             });
     }
@@ -117,5 +117,5 @@ class AppComponent {
 export const appComponent = {
     bindings: {},
     controller: AppComponent,
-    templateUrl: './app/components/app.component.html'
+    template: appTemplate
 };

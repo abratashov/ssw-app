@@ -1,3 +1,5 @@
+import tasksContainerTemplate from './tasks-container.component.html'
+
 class TasksContainerComponent {
     public static $inject = [];
 
@@ -32,5 +34,5 @@ export const tasksContainerComponent = {
         onMove: "&"
     },
     controller: TasksContainerComponent,
-    templateUrl: 'app/components/tasks/tasks-container/tasks-container.component.html'
+    template: tasksContainerTemplate
 };

@@ -1,3 +1,5 @@
+import taskTemplate from './task.component.html';
+
 class TaskComponent {
     public static $inject = [];
 
@@ -39,5 +41,5 @@ export const taskComponent = {
         onMove: "&"
     },
     controller: TaskComponent,
-    templateUrl: 'app/components/tasks/task/task.component.html'
+    template: taskTemplate
 };

@@ -1,3 +1,5 @@
+import sidebarTemplate from './sidebar.component.html';
+
 class SidebarComponent {
     public static $inject = [];
 
@@ -41,5 +43,5 @@ export const sidebarComponent = {
         onEdit: "&"
     },
     controller: SidebarComponent,
-    templateUrl: 'app/components/sidebar/sidebar.component.html'
+    template: sidebarTemplate
 };
