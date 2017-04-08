@@ -1,0 +1,23 @@
+<ssw-header on-add="$ctrl.showSidebarForm('create')"></ssw-header>
+<main>
+    <section class="todo-app--tasks flex-container flex-space-between padding-vertical-base">
+        <ssw-tasks-container class="flex-1"
+                             tasks="$ctrl.tasks"
+                             preview-item="$ctrl.itemToPreview"
+                             on-move="$ctrl.moveTask(obj)"
+                             on-preview="$ctrl.previewTask(task)">
+        </ssw-tasks-container>
+        <ssw-sidebar class="todo-app--tasks-sidebar"
+                     ng-if="$ctrl.tasks.length > 0"
+                     extended="$ctrl.sidebarExtended"
+                     preview="$ctrl.showPreviewForItem"
+                     action="$ctrl.formAction"
+                     form-item="$ctrl.formTask"
+                     preview-item="$ctrl.itemToPreview"
+                     on-remove="$ctrl.removeTask(task)"
+                     on-save="$ctrl.submitForm(task)"
+                     on-cancel="$ctrl.cancelForm()"
+                     on-edit="$ctrl.showSidebarForm('update')">
+        </ssw-sidebar>
+    </section>
+</main>

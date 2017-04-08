@@ -1,0 +1,12 @@
+<div class="todo-app--tasks-list flex-container flex-1 flex-space-between">
+    <div class="todo-app--tasks-list-{{status}} flex-1 text-center padding-horizontal-base bordered-column-left"
+         ng-repeat="status in $ctrl.statuses">
+        <h3>{{status.toUpperCase()}}({{$ctrl.getTasksByStatus(status).length}})</h3>
+        <ssw-task ng-repeat="task in $ctrl.getTasksByStatus(status)"
+                  task="task"
+                  active="task == $ctrl.previewItem"
+                  on-preview="$ctrl.showPreview(task)"
+                  on-move="$ctrl.moveTask(obj)">
+        </ssw-task>
+    </div>
+</div>

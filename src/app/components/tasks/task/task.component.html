@@ -1,0 +1,23 @@
+<div class="todo-app--tasks-list-item padding-base margin-vertical-small pointer flex-container"
+     ng-class="{'active': $ctrl.active}">
+    <div class="todo-app--tasks-list-item-text"
+         ng-click="$ctrl.showPreview($ctrl.task)"
+         title="{{task.description}}">
+        <span class="todo-app--tasks-list-item-label"
+              ng-class="{finished: $ctrl.task.status === 'done'}">
+            {{$ctrl.taskLabel + '-' + $ctrl.task.id}}
+        </span>
+        <span class="todo-app--tasks-list-item-summary"
+              ng-class="{finished: $ctrl.task.status === 'done'}">
+            {{$ctrl.task.summary}}
+        </span>
+    </div>
+    <div class="todo-app--tasks-list-item-panel flex-container flex-display-columns">
+        <div class="todo-app--tasks-list-item-panel--move flex-1"
+             ng-repeat="remainingStatus in $ctrl.getRemainingStatuses($ctrl.task.status)"
+             ng-class="{'bordered-column-top': $last}"
+             ng-click="$ctrl.moveTask({task: $ctrl.task, status: remainingStatus})">
+            {{remainingStatus}}
+        </div>
+    </div>
+</div>

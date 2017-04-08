@@ -4,7 +4,7 @@
               cols="50"
               rows="10"
               name="summary"
-              ng-model="form.item.summary"
+              ng-model="$ctrl.item.summary"
               class="form-control padding-vertical-base">
     </textarea><br><br>
 
@@ -13,10 +13,10 @@
               cols="50"
               rows="10"
               name="description"
-              ng-model="form.item.description"
+              ng-model="$ctrl.item.description"
               class="form-control padding-vertical-base">
     </textarea><br><br>
 
-    <button class="todo-app--tasks-preview-edit button-secondary" ng-click="form.onSave({task: form.item})">{{form.action}}</button>
-    <button class="todo-app--tasks-preview-remove button-primary" ng-click="form.onCancel()">Cancel</button>
+    <button class="todo-app--tasks-preview-edit button-secondary" ng-click="$ctrl.saveForm($ctrl.item)">{{$ctrl.action}}</button>
+    <button class="todo-app--tasks-preview-remove button-primary" ng-click="$ctrl.cancelForm()">Cancel</button>
 </form>

@@ -10,72 +10,8 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700" rel="stylesheet">
     <link rel="stylesheet" href="styles/app.css">
 </head>
-<body class="todo-app" ng-controller="todoAppController as vm">
-<header class="todo-app--toolbar flex-container flex-space-between padding-base background-primary font-large">
-    <a href="/" class="todo-app--toolbar-logo todo-app--toolbar color-primary padding-horizontal-base">TODO-APP</a>
-    <div class="todo-app--toolbar-add-button color-primary pointer" ng-click="vm.showSidebarForm('create')">+</div>
-</header>
-<main>
-    <section class="todo-app--tasks flex-container flex-space-between padding-vertical-base">
-        <div class="todo-app--tasks-list flex-container flex-1 flex-space-between">
-            <div class="todo-app--tasks-list-{{status}} flex-1 text-center padding-horizontal-base bordered-column-left"
-                 ng-repeat="status in vm.statuses">
-                <h3>{{status.toUpperCase()}}</h3>
-                <div class="todo-app--tasks-list-item padding-base margin-vertical-small pointer flex-container"
-                     ng-repeat="task in vm.getTasksByStatus(status)"
-                     ng-class="{'active': task === vm.itemToPreview}">
-                    <div class="todo-app--tasks-list-item-text"
-                         ng-click="vm.showPreview(task)"
-                         title="{{task.description}}">
-
-                        <span class="todo-app--tasks-list-item-label"
-                              ng-class="{finished: status === 'done'}">
-                            {{vm.taskLabel + '-' + task.id}}
-                        </span>
-                        <span class="todo-app--tasks-list-item-summary"
-                              ng-class="{finished: status === 'done'}">
-                            {{task.summary}}
-                        </span>
-                    </div>
-                    <div class="todo-app--tasks-list-item-panel flex-container flex-display-columns">
-                        <div class="todo-app--tasks-list-item-panel--move flex-1"
-                             ng-repeat="remainingStatus in vm.getRemainingStatuses(task.status)"
-                             ng-class="{'bordered-column-top': $last}"
-                             ng-click="vm.moveTask(task, remainingStatus)">
-                            {{remainingStatus}}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <aside class="todo-app--tasks-sidebar text-center bordered-column-left"
-               ng-class="{extended: vm.sidebarExtended}" ng-if="vm.tasks.length > 0">
-            <div ng-if="vm.sidebarExtended">
-                <todo-form item="vm.formTask"
-                           action="{{vm.formAction}}"
-                           on-save="vm.submitForm(task)"
-                           on-cancel="vm.cancelForm()">
-                </todo-form>
-            </div>
-            <div ng-if="!vm.showPreviewForItem && !vm.sidebarExtended">Click on any task to preview</div>
-            <div ng-if="vm.showPreviewForItem" class="text-left padding-horizontal-base">
-                <b>Summary:</b> <br> {{vm.itemToPreview.summary}} <br><br>
-                <b>Description:</b> <br> {{vm.itemToPreview.description}} <br> <br>
-                <b>Status:</b> <br> {{vm.itemToPreview.status}} <br> <br>
-                <b>Created:</b> <br> {{vm.getDateFromTimestamp(vm.itemToPreview.date, true)}} <br> <br>
-                <hr>
-                <button class="todo-app--tasks-preview-edit button-secondary"
-                        ng-click="vm.showSidebarForm('update')">
-                    Edit
-                </button>
-                <button class="todo-app--tasks-preview-remove button-primary"
-                        ng-click="vm.removeTask(vm.itemToPreview)">
-                    Remove
-                </button>
-            </div>
-        </aside>
-    </section>
-</main>
+<body class="todo-app">
+<ssw-app></ssw-app>
 <script src="bundle.js"></script>
 </body>
 </html>
