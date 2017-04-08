@@ -4,7 +4,7 @@ import { module } from 'angular';
 import { ApiService } from './services';
 import {
     appComponent,
-    headerComponent,
+    headerComponentDowngraded,
     tasksContainerComponent,
     taskComponent,
     sidebarComponent,
@@ -15,7 +15,7 @@ import {
 // AngularJS module
 module ('todoApp', [])
     .component('sswApp', appComponent)
-    .component('sswHeader', headerComponent)
+    .directive('sswHeader', headerComponentDowngraded)
     .component('sswTasksContainer', tasksContainerComponent)
     .component('sswTask', taskComponent)
     .component('sswSidebar', sidebarComponent)
@@ -28,6 +28,7 @@ module ('todoApp', [])
 import { NgModule } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser';
 import { UpgradeModule } from '@angular/upgrade/static';
+import { HeaderComponent } from './components';
 
 
 // Angular module
@@ -37,10 +38,10 @@ import { UpgradeModule } from '@angular/upgrade/static';
         UpgradeModule
     ],
     declarations: [
-
+        HeaderComponent
     ],
     entryComponents: [
-
+        HeaderComponent
     ]
 })
 export class AppModule {

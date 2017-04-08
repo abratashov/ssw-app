@@ -1,18 +1,15 @@
-import headerTemplate from './header.component.html'
+import { Component, EventEmitter, Output } from '@angular/core';
+import headerTemplate from './header.component.html';
 
-class HeaderComponent {
-    public onAdd: () => void;
-    public static $inject = [];
+@Component({
+    selector: 'ssw-header',
+    template: headerTemplate
+})
+export class HeaderComponent {
+    @Output() public add = new EventEmitter<void>();
 
     public addNewTask(): void {
-        this.onAdd();
+        debugger;
+        this.add.emit();
     }
 }
-
-export const headerComponent = {
-    bindings: {
-        onAdd: "&"
-    },
-    controller: HeaderComponent,
-    template: headerTemplate
-};
