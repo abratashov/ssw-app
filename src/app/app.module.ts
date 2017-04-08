@@ -1,3 +1,4 @@
+// AngularJS imports
 import { module } from 'angular';
 
 import { ApiService } from './services';
@@ -11,7 +12,8 @@ import {
     formComponent
 } from './components';
 
-export default module ('todoApp', [])
+// AngularJS module
+module ('todoApp', [])
     .component('sswApp', appComponent)
     .component('sswHeader', headerComponent)
     .component('sswTasksContainer', tasksContainerComponent)
@@ -21,3 +23,26 @@ export default module ('todoApp', [])
     .component('sswForm', formComponent)
     .service('ApiService', ApiService)
     .name;
+
+// Angular imports
+import { NgModule } from '@angular/core'
+import { BrowserModule } from '@angular/platform-browser';
+import { UpgradeModule } from '@angular/upgrade/static';
+
+
+// Angular module
+@NgModule({
+    imports: [
+        BrowserModule,
+        UpgradeModule
+    ],
+    declarations: [
+
+    ],
+    entryComponents: [
+
+    ]
+})
+export class AppModule {
+    ngDoBootstrap() {}
+}
